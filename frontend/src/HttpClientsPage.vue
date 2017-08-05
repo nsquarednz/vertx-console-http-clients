@@ -28,10 +28,7 @@ export default {
         const updateData = () => {
             this.$http.get(window.location.pathname + '/httpclients')
                 .then(response => response.data)
-                .then(data => {
-                    data['vertx.http.clients.fake-client.connections'] = true;
-                    this.httpClientsMetrics = data
-                });
+                .then(data => this.httpClientsMetrics = data);
         };
         updateData();
         this.updateTask = setInterval(updateData, 1000);
