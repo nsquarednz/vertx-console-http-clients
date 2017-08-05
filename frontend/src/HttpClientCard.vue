@@ -7,7 +7,7 @@
 <template>
     <div class="http-client card-pf">
         <h2>{{ name }}</h2>
-        {{ httpClientsMetrics }}
+        <pre>{{ JSON.stringify(httpClientsMetrics, null, 4) }}</pre>
     </div>
 </template>
 
