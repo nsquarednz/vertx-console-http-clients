@@ -1,13 +1,20 @@
 <template>
-    <pre class='httpClients'>{{ clientNames }}</pre>
+    <div class="http-clients-list">
+        <http-client v-for="name in clientNames" :key="name" :name="name" :httpClientsMetrics="httpClientsMetrics" />
+    </div>
 </template>
 
 <script>
+import HttpClientCard from './HttpClientCard.vue';
+
 const prefix = 'vertx.http.clients.';
 const defaultClientName = prefix.substring(0, prefix.length - 1);
 
 export default {
     name: 'HTTP Clients',
+    components: {
+        'http-client': HttpClientCard
+    },
     data() {
         return {
             httpClientsMetrics: {}
@@ -16,7 +23,7 @@ export default {
     computed: {
         clientNames() {
             const suffix = '.connections';
-            return [ defaultClientName ].concat(Object.keys(this.httpClientsMetrics)
+            return [defaultClientName].concat(Object.keys(this.httpClientsMetrics)
                 .filter(el => el.startsWith(prefix))
                 .map(el => el.substring(prefix.length))
                 .filter(el => el.endsWith(suffix))
