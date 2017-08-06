@@ -38,6 +38,12 @@
         }
     }
 
+    tr:nth-last-child(2) {
+        th {
+            padding-bottom: 5px;
+        }
+    }
+
     th {
         font-weight: normal;
         padding-right: 20px;

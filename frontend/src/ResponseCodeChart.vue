@@ -2,7 +2,6 @@
 .chart-wrapper {
     border-top: 1px solid #f1f1f1;
     padding-top: 15px;
-    margin-top: 5px;
 }
 </style>
 
