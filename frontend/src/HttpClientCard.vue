@@ -83,11 +83,11 @@
 
     .left {
         border-right: 1px solid #e1e1e1;
-        padding: 15px 0;
+        padding: 15px 0 0;
     }
 
     .right {
-        height: 395px;
+        height: 375px;
         overflow-y: auto;
     }
 }
