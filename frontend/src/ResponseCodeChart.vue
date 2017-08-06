@@ -1,6 +1,14 @@
+<style lang="scss">
+.chart-wrapper {
+    border-top: 1px solid #f1f1f1;
+    padding-top: 15px;
+    margin-top: 5px;
+}
+</style>
+
 <template>
-    <div v-if="responses1xx">
-        <multi-donut legendPosition="bottom" :data="codeCounts" />
+    <div class="chart-wrapper" v-if="responses1xx">
+        <multi-donut legendPosition="bottom" :data="codeCounts" :centerText="centerText" />
     </div>
     <div v-else />
 </template>
@@ -31,6 +39,17 @@ export default {
                     )
                 ])
             };
+        },
+        centerText() {
+            let successes;
+            let total = 0;
+            for (let [k, v] of this.codeCounts.columns) {
+                if (k === '2xx') {
+                    successes = v;
+                }
+                total += v;
+            }
+            return { big: (successes * 100 / total).toFixed(1) + '%', small: 'OK Responses' }
         }
     }
 }

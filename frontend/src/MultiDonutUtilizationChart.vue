@@ -3,7 +3,8 @@ import C3Wrapper from './C3Wrapper.vue';
 
 export default {
     props: {
-        legendPosition: String
+        legendPosition: String,
+        centerText: Object
     },
     extends: C3Wrapper,
     methods: {
@@ -26,11 +27,23 @@ export default {
                 type: 'donut'
             };
         },
+        onGenerated() {
+            this.updateCenterText();
+        },
         onDataUpdated() {
             if (!document.hidden) {
-                console.log(this.chartData.data)
                 this.chart.load(this.chartData.data);
             }
+        },
+        updateCenterText() {
+            if (this.centerText) {
+                this.patternfly.pfSetDonutChartTitle(this.$el, this.centerText.big, this.centerText.small);
+            }
+        }
+    },
+    watch: {
+        centerText() {
+            this.updateCenterText();
         }
     }
 }
