@@ -92,8 +92,8 @@
                     <request-row type="PATCH" :getMetric="getMetric" />
                     <request-row type="All types" keyName="requests" :getMetric="getMetric" />
                 </table>
-                {{ Object.entries(httpClientsMetrics).filter(el => el[0].includes('responses-')) }}
-                <multi-donut legendPosition="bottom"/>
+                {{ getMetric('responses-5xx') }}
+                <response-code-chart :getMetric="getMetric"/>
             </div>
         </div>
     </div>
@@ -101,12 +101,12 @@
 
 <script>
 import RequestRow from './RequestRow.vue';
-import MultiDonutUtilizationChart from './MultiDonutUtilizationChart.vue';
+import ResponseCodeChart from './ResponseCodeChart.vue';
 
 export default {
     components: {
         'request-row': RequestRow,
-        'multi-donut': MultiDonutUtilizationChart
+        'response-code-chart': ResponseCodeChart
     },
     props: {
         name: String,

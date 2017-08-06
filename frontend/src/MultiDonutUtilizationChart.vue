@@ -3,12 +3,13 @@ import C3Wrapper from './C3Wrapper.vue';
 
 export default {
     props: {
-        legendPosition: String
+        legendPosition: String,
+        columnData: Array
     },
     extends: C3Wrapper,
     methods: {
         getDefaults(chartDefaults) {
-            let chartData = chartDefaults().getDefaultDonutConfig('');
+            let chartData = chartDefaults().getDefaultDonutConfig();
             chartData.transition = { duration: 0 };
             chartData.tooltip = { show: true };
             if (this.legendPosition) {
@@ -17,17 +18,12 @@ export default {
                     position: this.legendPosition
                 };
             }
-            chartData.color.pattern = ['#f0f', "#ff0", '#f8a', '#0f0'];
+            chartData.color.pattern = ['#0088ce', "#3f9c35", '#ec7a08', '#a30000'];
             return chartData;
         },
         getC3Data() {
             return {
-                columns: [
-                    ['Dogs', 2],
-                    ['Cats', 2],
-                    ['Fish', 3],
-                    ['Hamsters', 1]
-                ],
+                columns: this.columnData,
                 type: 'donut'
             };
         }
