@@ -6,8 +6,10 @@
 
 <template>
     <div class="http-client card-pf">
-        <h2>{{ name }}</h2>
-        <pre>{{ JSON.stringify(httpClientsMetrics, null, 4) }}</pre>
+        <div class="requests-section">
+            <h2>{{ name }}</h2>
+            <pre>{{ JSON.stringify(requests, null, 4) }}</pre>
+        </div>
     </div>
 </template>
 
@@ -16,6 +18,16 @@ export default {
     props: {
         name: String,
         httpClientsMetrics: Object
+    },
+    methods: {
+        getMetric(metricName) {
+            return this.httpClientsMetrics[this.name + '.' + metricName];
+        }
+    },
+    computed: {
+        requests() {
+            return this.getMetric('requests');
+        }
     }
 }
 </script>
