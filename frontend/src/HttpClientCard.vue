@@ -2,6 +2,10 @@
 .http-client {
     padding: 0;
 
+    .donut-title-small-pf {
+        width: 40px;
+    }
+
     .client-name,
     .time-period,
     table {
