@@ -3,13 +3,22 @@
     padding: 0;
 
     .client-name,
+    .time-period,
     table {
         margin: 0 15px;
     }
 
     .client-name {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 300;
+        display: inline-block;
+    }
+
+    .time-period {
+        float: right;
+        text-transform: uppercase;
+        font-weight: bold;
+        line-height: 26.5px;
     }
 
     .card-pf-body {
@@ -98,6 +107,7 @@
         <div class="http-client card-pf">
             <div class="card-pf-body">
                 <div class="client-name">{{ name }}</div>
+                <div class="time-period">Last 5m</div>
                 <div class="pf-card-separator" />
                 <div class="stats">
                     <div class="left">

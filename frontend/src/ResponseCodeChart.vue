@@ -48,7 +48,7 @@ export default {
                 }
                 total += v;
             }
-            return { big: +(successes * 100 / total).toFixed(1) + '%', small: '\u2714 in last 5m' }
+            return { big: +(successes * 100 / total).toFixed(1) + '%', small: '\u2714 requests' }
         }
     }
 }
