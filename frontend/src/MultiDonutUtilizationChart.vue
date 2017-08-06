@@ -21,7 +21,6 @@ export default {
             return chartData;
         },
         getC3Data() {
-            console.log(this.data)
             return {
                 columns: this.data.columns,
                 type: 'donut'
