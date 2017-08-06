@@ -56,6 +56,7 @@
         &.type {
             color: #4d5258;
             padding-right: 10px;
+            min-width: 65px;
         }
 
         &.rate {
@@ -82,8 +83,12 @@
 
     .left {
         border-right: 1px solid #e1e1e1;
-        margin-bottom: -5px;
         padding: 15px 0;
+    }
+
+    .right {
+        height: 395px;
+        overflow-y: auto;
     }
 }
 </style>
