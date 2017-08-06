@@ -1,7 +1,7 @@
 <template>
     <div v-if="responses1xx">
         <div>{{ codeCounts }}</div>
-        <multi-donut legendPosition="bottom" :columnData="codeCounts" />
+        <multi-donut legendPosition="bottom" :data="codeCounts" />
     </div>
     <div v-else />
 </template>
@@ -23,13 +23,15 @@ export default {
             return this.getMetric('responses-1xx');
         },
         codeCounts() {
-            return ['1xx', '2xx', '3xx', '4xx', '5xx'].map(el => [
-                el,
-                Math.ceil(
-                    (el === '1xx' ? this.responses1xx : this.getMetric('responses-' + el))
-                        .fiveMinuteRate * SECONDS_IN_5_MIN
-                )
-            ]);
+            return {
+                columns: ['1xx', '2xx', '3xx', '4xx', '5xx'].map(el => [
+                    el,
+                    Math.ceil(
+                        (el === '1xx' ? this.responses1xx : this.getMetric('responses-' + el))
+                            .fiveMinuteRate * SECONDS_IN_5_MIN
+                    )
+                ])
+            };
         }
     }
 }

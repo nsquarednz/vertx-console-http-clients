@@ -3,8 +3,7 @@ import C3Wrapper from './C3Wrapper.vue';
 
 export default {
     props: {
-        legendPosition: String,
-        columnData: Array
+        legendPosition: String
     },
     extends: C3Wrapper,
     methods: {
@@ -22,10 +21,17 @@ export default {
             return chartData;
         },
         getC3Data() {
+            console.log(this.data)
             return {
-                columns: this.columnData,
+                columns: this.data.columns,
                 type: 'donut'
             };
+        },
+        onDataUpdated() {
+            if (!document.hidden) {
+                console.log(this.chartData.data)
+                this.chart.load(this.chartData.data);
+            }
         }
     }
 }
