@@ -33,8 +33,7 @@ export default {
                 .filter(el => el.startsWith(prefix))
                 .map(el => el.substring(prefix.length))
                 .filter(el => el.endsWith(suffix))
-                .map(el => el.substring(0, el.length - suffix.length))
-                .map(el => prefix + el));
+                .map(el => prefix + el.substring(0, el.length - suffix.length)));
         }
     },
     beforeMount() {
