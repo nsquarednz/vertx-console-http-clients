@@ -3,7 +3,8 @@
     margin: 0 15px 15px;
     padding: 0;
 
-    .client-name, table {
+    .client-name,
+    table {
         margin: 0 15px;
     }
 
@@ -22,19 +23,38 @@
         margin: 15px 0;
     }
 
-    tr:first-child th {
-        font-weight: normal;
+    tr:first-child {
+        border-bottom: 1px solid #f1f1f1;
+        th {
+            font-weight: 300;
+            font-size: 14px;
+            padding-bottom: 4px;
+        }
+    }
+
+    tr:nth-child(2) {
+        th {
+            padding-top: 4px;
+        }
     }
 
     th {
+        font-weight: normal;
         padding-right: 20px;
+
+        &.bold {
+            font-weight: bold;
+            border-right: 1px solid #f1f1f1;
+        }
 
         &.type {
             color: #4d5258;
+            padding-right: 10px;
         }
 
         &.rate {
             color: #00659c;
+            padding-left: 10px;
         }
 
         &.m-1 {
@@ -59,7 +79,7 @@
             <div class="pf-card-separator" />
             <table>
                 <tr>
-                    <th>Request</th>
+                    <th class="type">Request</th>
                     <th class="rate">Rate</th>
                     <th class="m-1">1m</th>
                     <th class="m-5">5m</th>

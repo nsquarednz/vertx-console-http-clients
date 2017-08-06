@@ -1,6 +1,6 @@
 <template>
     <tr v-if="requestData">
-        <th class="type">{{ type }}</th>
+        <th class="type bold">{{ type }}</th>
         <th class="rate">{{ requestData.oneSecondRate.toFixed(2) }}/s</th>
         <th class="m-1">{{ requestData.oneMinuteRate.toFixed(2) }}/s</th>
         <th class="m-5">{{ requestData.fiveMinuteRate.toFixed(2) }}/s</th>
