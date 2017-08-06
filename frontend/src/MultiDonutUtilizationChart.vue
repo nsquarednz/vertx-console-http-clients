@@ -3,7 +3,7 @@ import C3Wrapper from './C3Wrapper.vue';
 
 export default {
     props: {
-        legendOptions: Object
+        legendPosition: String
     },
     extends: C3Wrapper,
     methods: {
@@ -11,8 +11,11 @@ export default {
             let chartData = chartDefaults().getDefaultDonutConfig('');
             chartData.transition = { duration: 0 };
             chartData.tooltip = { show: true };
-            if (this.legendOptions) {
-                donutChartBottomConfig.legend = this.legendOptions;
+            if (this.legendPosition) {
+                chartData.legend = {
+                    show: true,
+                    position: this.legendPosition
+                };
             }
             chartData.color.pattern = ['#f0f', "#ff0", '#f8a', '#0f0'];
             return chartData;

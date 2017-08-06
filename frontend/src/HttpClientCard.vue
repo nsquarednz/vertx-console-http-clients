@@ -93,7 +93,7 @@
                     <request-row type="All types" keyName="requests" :getMetric="getMetric" />
                 </table>
                 {{ Object.entries(httpClientsMetrics).filter(el => el[0].includes('responses-')) }}
-                <multi-donut/>
+                <multi-donut legendPosition="bottom"/>
             </div>
         </div>
     </div>
