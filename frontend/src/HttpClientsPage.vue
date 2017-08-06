@@ -1,3 +1,9 @@
+<style lang="scss">
+.http-clients-list {
+    padding: 15px 0;
+}
+</style>
+
 <template>
     <div class="http-clients-list">
         <http-client v-for="name in clientNames" :key="name" :name="name" :httpClientsMetrics="httpClientsMetrics" />
