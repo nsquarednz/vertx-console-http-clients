@@ -17,7 +17,7 @@ export default {
                     position: this.legendPosition
                 };
             }
-            chartData.color.pattern = ['#0088ce', "#3f9c35", '#ec7a08', '#a30000'];
+            chartData.color.pattern = ['#0088ce', '#3f9c35', '#f5c12e', '#ec7a08', '#a30000'];
             return chartData;
         },
         getC3Data() {
