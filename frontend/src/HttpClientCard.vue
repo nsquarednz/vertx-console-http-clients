@@ -77,23 +77,28 @@
             <div class="card-pf-body">
                 <div class="client-name">{{ name }}</div>
                 <div class="pf-card-separator" />
-                <table>
-                    <tr>
-                        <th class="type">Request</th>
-                        <th class="rate">Rate</th>
-                        <th class="m-1">1m</th>
-                        <th class="m-5">5m</th>
-                        <th class="m-15">15m</th>
-                    </tr>
-                    <request-row type="GET" :getMetric="getMetric" />
-                    <request-row type="POST" :getMetric="getMetric" />
-                    <request-row type="PUT" :getMetric="getMetric" />
-                    <request-row type="DELETE" :getMetric="getMetric" />
-                    <request-row type="PATCH" :getMetric="getMetric" />
-                    <request-row type="All types" keyName="requests" :getMetric="getMetric" />
-                </table>
-                {{ getMetric('responses-5xx') }}
-                <response-code-chart :getMetric="getMetric"/>
+                <div class="left">
+                    <table>
+                        <tr>
+                            <th class="type">Request</th>
+                            <th class="rate">Rate</th>
+                            <th class="m-1">1m</th>
+                            <th class="m-5">5m</th>
+                            <th class="m-15">15m</th>
+                        </tr>
+                        <request-row type="GET" :getMetric="getMetric" />
+                        <request-row type="POST" :getMetric="getMetric" />
+                        <request-row type="PUT" :getMetric="getMetric" />
+                        <request-row type="DELETE" :getMetric="getMetric" />
+                        <request-row type="PATCH" :getMetric="getMetric" />
+                        <request-row type="All types" keyName="requests" :getMetric="getMetric" />
+                        <tr>
+                            <td colspan="5">
+                                <response-code-chart :getMetric="getMetric" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

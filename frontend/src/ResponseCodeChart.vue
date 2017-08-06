@@ -1,6 +1,5 @@
 <template>
     <div v-if="responses1xx">
-        <div>{{ codeCounts }}</div>
         <multi-donut legendPosition="bottom" :data="codeCounts" />
     </div>
     <div v-else />
