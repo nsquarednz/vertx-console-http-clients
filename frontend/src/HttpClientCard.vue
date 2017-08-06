@@ -1,6 +1,5 @@
 <style lang="scss">
 .http-client {
-    margin: 0 15px 15px;
     padding: 0;
 
     .client-name,
@@ -73,35 +72,41 @@
 </style>
 
 <template>
-    <div class="http-client card-pf">
-        <div class="card-pf-body">
-            <div class="client-name">{{ name }}</div>
-            <div class="pf-card-separator" />
-            <table>
-                <tr>
-                    <th class="type">Request</th>
-                    <th class="rate">Rate</th>
-                    <th class="m-1">1m</th>
-                    <th class="m-5">5m</th>
-                    <th class="m-15">15m</th>
-                </tr>
-                <request-row type="GET" :getMetric="getMetric" />
-                <request-row type="POST" :getMetric="getMetric" />
-                <request-row type="PUT" :getMetric="getMetric" />
-                <request-row type="DELETE" :getMetric="getMetric" />
-                <request-row type="PATCH" :getMetric="getMetric" />
-                <request-row type="All types" keyName="requests" :getMetric="getMetric" />
-            </table>
+    <div class="col-md-6">
+        <div class="http-client card-pf">
+            <div class="card-pf-body">
+                <div class="client-name">{{ name }}</div>
+                <div class="pf-card-separator" />
+                <table>
+                    <tr>
+                        <th class="type">Request</th>
+                        <th class="rate">Rate</th>
+                        <th class="m-1">1m</th>
+                        <th class="m-5">5m</th>
+                        <th class="m-15">15m</th>
+                    </tr>
+                    <request-row type="GET" :getMetric="getMetric" />
+                    <request-row type="POST" :getMetric="getMetric" />
+                    <request-row type="PUT" :getMetric="getMetric" />
+                    <request-row type="DELETE" :getMetric="getMetric" />
+                    <request-row type="PATCH" :getMetric="getMetric" />
+                    <request-row type="All types" keyName="requests" :getMetric="getMetric" />
+                </table>
+                {{ Object.entries(httpClientsMetrics).filter(el => el[0].includes('responses-')) }}
+                <multi-donut/>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import RequestRow from './RequestRow.vue';
+import MultiDonutUtilizationChart from './MultiDonutUtilizationChart.vue';
 
 export default {
     components: {
-        'request-row': RequestRow
+        'request-row': RequestRow,
+        'multi-donut': MultiDonutUtilizationChart
     },
     props: {
         name: String,
@@ -124,6 +129,9 @@ export default {
         },
         deleteRequests() {
             return this.getMetric('delete-requests');
+        },
+        c3Wrapper() {
+            return Vue.component('c3-wrapper');
         }
 
     }

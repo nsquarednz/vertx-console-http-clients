@@ -1,6 +1,6 @@
 <style lang="scss">
 .http-clients-list {
-    padding: 15px 0;
+    padding: 20px 10px;
 }
 </style>
 
