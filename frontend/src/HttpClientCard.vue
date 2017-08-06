@@ -14,12 +14,13 @@
 
     .card-pf-body {
         margin-top: 15px;
+        padding-bottom: 0;
     }
 
     .card-pf-body .pf-card-separator {
         height: 1px;
         background: #e1e1e1;
-        margin: 15px 0;
+        margin-top: 15px;
     }
 
     tr:first-child {
@@ -67,6 +68,13 @@
         &.m-15 {
             color: #3f9c35;
         }
+    }
+
+    .left {
+        border-right: 1px solid #e1e1e1;
+        display: inline-block;
+        margin-bottom: -5px;
+        padding: 15px 0;
     }
 }
 </style>
