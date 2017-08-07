@@ -1,12 +1,17 @@
 <style lang="scss">
 .http-clients-list {
-    padding: 20px 10px;
+    padding: 10px;
 }
 </style>
 
 <template>
-    <div class="http-clients-list">
-        <http-client v-for="name in clientNames" :key="name" :name="name" :httpClientsMetrics="httpClientsMetrics" />
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>HTTP Clients</h1>
+        </div>
+        <div class="http-clients-list row">
+            <http-client v-for="name in clientNames" :key="name" :name="name" :httpClientsMetrics="httpClientsMetrics" />
+        </div>
     </div>
 </template>
 
