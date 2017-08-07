@@ -100,10 +100,15 @@
     }
 
     .right {
-        height: 375px;
         overflow-y: auto;
         width: 100%;
+    }
+
+    .connections {
         padding: 15px;
+        border-bottom: 1px solid #e1e1e1;
+        height: 305px;
+        overflow-y: auto;
     }
 
     .connections-title {
@@ -117,8 +122,9 @@
         &:nth-child(2) {
             margin-top: 4px;
         }
-        
-        .host, .open {
+
+        .host,
+        .open {
             display: inline-block;
         }
 
@@ -126,6 +132,31 @@
             float: right;
             text-transform: uppercase;
             font-weight: bold;
+        }
+    }
+
+    .other {
+        height: 70px;
+        overflow: auto;
+        padding: 15px;
+
+        .key {
+            display: inline-block;
+        }
+
+        .value {
+            float: right;
+            font-weight: bold;
+        }
+
+        .counter-row {
+            &.websockets {
+                color: #007a87;
+            }
+
+            &.exceptions {
+                color: #ec7a08;
+            }
         }
     }
 }
@@ -162,10 +193,27 @@
                         </table>
                     </div>
                     <div class="right">
-                        <div class="connections-title">Connections by Host</div>
-                        <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">
-                            <div class="host">{{ host }}</div>
-                            <div class="open">{{ abbreviate(open, 1) }} open</div>
+                        <div class="connections">
+                            <div class="connections-title">Connections by Host</div>
+                            <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">
+                                <div class="host">{{ host }}</div>
+                                <div class="open">{{ abbreviate(open, 1) }} open</div>
+                            </div>
+                        </div>
+                        <div class="other">
+                            <div class="counter-row websockets">
+                                <div class="key">WebSockets</div>
+                                <div class="value">{{ abbreviate(getMetric('open-websockets').count, 2) }}
+                                    <i class="fa fa-exchange" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="counter-row exceptions">
+                                <div class="key">Exceptions</div>
+                                <div class="value">{{ abbreviate(getMetric('exceptions').count, 2) }}
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                </div>
+                            </div>
+    
                         </div>
                     </div>
                 </div>
