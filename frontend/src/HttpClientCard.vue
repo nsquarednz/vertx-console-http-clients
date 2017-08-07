@@ -197,20 +197,22 @@
                             <div class="connections-title">Connections by Host</div>
                             <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">
                                 <div class="host">{{ host }}</div>
-                                <div class="open">{{ abbreviate(open, 1) }} open</div>
+                                <div class="open">{{ abbreviate(open, 1) }}
+                                    <i class="fa fa-exchange" aria-hidden="true" />
+                                </div>
                             </div>
                         </div>
                         <div class="other">
                             <div class="counter-row websockets">
                                 <div class="key">WebSockets</div>
                                 <div class="value">{{ abbreviate(getMetric('open-websockets').count, 2) }}
-                                    <i class="fa fa-exchange" aria-hidden="true"></i>
+                                    <i class="fa fa-plug" aria-hidden="true" />
                                 </div>
                             </div>
                             <div class="counter-row exceptions">
                                 <div class="key">Exceptions</div>
                                 <div class="value">{{ abbreviate(getMetric('exceptions').count, 2) }}
-                                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                                    <i class="fa fa-exclamation-triangle" aria-hidden="true" />
                                 </div>
                             </div>
     
