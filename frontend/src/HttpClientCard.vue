@@ -109,6 +109,24 @@
     .connections-title {
         font-size: 14px;
         font-weight: 300;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 4px;
+    }
+
+    .connection-row {
+        &:nth-child(2) {
+            margin-top: 4px;
+        }
+        
+        .host, .open {
+            display: inline-block;
+        }
+
+        .open {
+            float: right;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
     }
 }
 </style>
@@ -145,7 +163,10 @@
                     </div>
                     <div class="right">
                         <div class="connections-title">Connections by Host</div>
-                        <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">{{ host }} {{ open }}</div>
+                        <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">
+                            <div class="host">{{ host }}</div>
+                            <div class="open">{{ open }} open</div>
+                        </div>
                     </div>
                 </div>
             </div>
