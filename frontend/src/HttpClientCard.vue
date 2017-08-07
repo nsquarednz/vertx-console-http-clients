@@ -150,11 +150,11 @@
         }
 
         .counter-row {
-            &.websockets {
+            &.websockets .value {
                 color: #007a87;
             }
 
-            &.exceptions {
+            &.exceptions .value {
                 color: #ec7a08;
             }
         }
