@@ -136,7 +136,7 @@
         <div class="http-client card-pf">
             <div class="card-pf-body">
                 <div class="client-name">{{ name }}</div>
-                <div class="time-period">{{ getMetric('requests').count }} Total Reqs</div>
+                <div class="time-period">{{ abbreviate(getMetric('requests').count, 1) }} Total Reqs</div>
                 <div class="pf-card-separator" />
                 <div class="stats">
                     <div class="left">
@@ -165,7 +165,7 @@
                         <div class="connections-title">Connections by Host</div>
                         <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">
                             <div class="host">{{ host }}</div>
-                            <div class="open">{{ open }} open</div>
+                            <div class="open">{{ abbreviate(open, 1) }} open</div>
                         </div>
                     </div>
                 </div>
@@ -175,6 +175,7 @@
 </template>
 
 <script>
+import abbreviate from 'number-abbreviate';
 import RequestRow from './RequestRow.vue';
 import ResponseCodeChart from './ResponseCodeChart.vue';
 
@@ -191,6 +192,9 @@ export default {
         getMetric(metricName) {
             return this.httpClientsMetrics[this.name + '.' + metricName];
         }
+    },
+    beforeMount() {
+        this.abbreviate = abbreviate;
     },
     computed: {
         requests() {
