@@ -7,22 +7,17 @@
 
 <template>
     <div class="chart-wrapper" v-if="responses1xx">
-        <multi-donut legendPosition="bottom" :data="codeCounts" :centerText="centerText" />
+        <pf-donut legendPosition="bottom" :data="codeCounts" :centerText="centerText" />
     </div>
     <div v-else />
 </template>
 
 <script>
-import MultiDonutUtilizationChart from './MultiDonutUtilizationChart.vue';
-
 const SECONDS_IN_5_MIN = 60 * 5;
 
 export default {
     props: {
         getMetric: Function
-    },
-    components: {
-        'multi-donut': MultiDonutUtilizationChart
     },
     computed: {
         responses1xx() {
