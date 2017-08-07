@@ -61,6 +61,10 @@
         font-weight: normal;
         padding-right: 20px;
 
+        @media (min-width: 1600px) {
+            padding-right: 40px;
+        }
+
         &.bold {
             font-weight: bold;
             border-right: 1px solid #f1f1f1;
@@ -69,12 +73,18 @@
         &.type {
             color: #4d5258;
             padding-right: 10px;
+            @media (min-width: 1600px) {
+                padding-right: 20px;
+            }
             min-width: 65px;
         }
 
         &.rate {
             color: #00659c;
             padding-left: 10px;
+            @media (min-width: 1600px) {
+                padding-left: 20px;
+            }
         }
 
         &.m-1 {
@@ -256,7 +266,7 @@ export default {
                 return this.name.substring(prefix.length);
             } else {
                 return this.name;
-            } 
+            }
         },
         requests() {
             return this.getMetric('requests');
