@@ -102,6 +102,13 @@
     .right {
         height: 375px;
         overflow-y: auto;
+        width: 100%;
+        padding: 13px 15px 15px;
+    }
+
+    .connections-title {
+        font-size: 16px;
+        font-weight: 300;
     }
 }
 </style>
@@ -137,7 +144,8 @@
                         </table>
                     </div>
                     <div class="right">
-                        {{ hostnameConnections }}
+                        <div class="connections-title">Connections by Host</div>
+                        <div class="connection-row" v-for="[host, open] in hostnameConnections" :key="host">{{ host }} {{ open }}</div>
                     </div>
                 </div>
             </div>
