@@ -166,7 +166,7 @@
     <div class="col-md-6">
         <div class="http-client card-pf">
             <div class="card-pf-body">
-                <div class="client-name">{{ name }}</div>
+                <div class="client-name">{{ displayedName }}</div>
                 <div class="time-period">{{ abbreviate(getMetric('requests').count, 1) }} Total Reqs</div>
                 <div class="pf-card-separator" />
                 <div class="stats">
@@ -229,6 +229,8 @@ import abbreviate from 'number-abbreviate';
 import RequestRow from './RequestRow.vue';
 import ResponseCodeChart from './ResponseCodeChart.vue';
 
+const prefix = 'vertx.http.clients.';
+
 export default {
     components: {
         'request-row': RequestRow,
@@ -247,6 +249,15 @@ export default {
         this.abbreviate = abbreviate;
     },
     computed: {
+        displayedName() {
+            if (this.name === 'vertx.http.clients') {
+                return 'default';
+            } else if (this.name.startsWith(prefix)) {
+                return this.name.substring(prefix.length);
+            } else {
+                return this.name;
+            } 
+        },
         requests() {
             return this.getMetric('requests');
         },
