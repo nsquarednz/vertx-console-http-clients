@@ -137,7 +137,7 @@
                         </table>
                     </div>
                     <div class="right">
-                        {{ httpClientsMetrics }}
+                        {{ hostnameConnections }}
                     </div>
                 </div>
             </div>
@@ -176,10 +176,12 @@ export default {
         deleteRequests() {
             return this.getMetric('delete-requests');
         },
-        c3Wrapper() {
-            return Vue.component('c3-wrapper');
+        hostnameConnections() {
+            const hostnamePrefix = this.name + '.open-connections.';
+            return Object.entries(this.httpClientsMetrics)
+                .filter(el => el[0].startsWith(hostnamePrefix))
+                .map(el => [el[0].substring(hostnamePrefix.length), el[1].count]);
         }
-
     }
 }
 </script>
