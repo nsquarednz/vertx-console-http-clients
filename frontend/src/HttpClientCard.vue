@@ -167,7 +167,7 @@
         <div class="http-client card-pf">
             <div class="card-pf-body">
                 <div class="client-name">{{ displayedName }}</div>
-                <div class="time-period">{{ abbreviate(getMetric('requests').count, 1) }} Total Reqs</div>
+                <div class="time-period">{{ requests ? abbreviate(requests.count, 1) : 0 }} Total Reqs</div>
                 <div class="pf-card-separator" />
                 <div class="stats">
                     <div class="left">
@@ -205,13 +205,13 @@
                         <div class="other">
                             <div class="counter-row websockets">
                                 <div class="key">WebSockets</div>
-                                <div class="value">{{ abbreviate(getMetric('open-websockets').count, 2) }}
+                                <div class="value">{{ openWebSockets ? abbreviate(openWebSockets.count, 2) : 0 }}
                                     <i class="fa fa-plug" aria-hidden="true" />
                                 </div>
                             </div>
                             <div class="counter-row exceptions">
                                 <div class="key">Exceptions</div>
-                                <div class="value">{{ abbreviate(getMetric('exceptions').count, 2) }}
+                                <div class="value">{{ exceptions ? abbreviate(exceptions.count, 2) : 0 }}
                                     <i class="fa fa-exclamation-triangle" aria-hidden="true" />
                                 </div>
                             </div>
@@ -270,11 +270,28 @@ export default {
         deleteRequests() {
             return this.getMetric('delete-requests');
         },
+        openWebSockets() {
+            return this.getMetric('open-websockets');
+        },
+        exceptions() {
+            return this.getMetric('exceptions');
+        },
         hostnameConnections() {
             const hostnamePrefix = this.name + '.open-connections.';
             return Object.entries(this.httpClientsMetrics)
                 .filter(el => el[0].startsWith(hostnamePrefix))
-                .map(el => [el[0].substring(hostnamePrefix.length), el[1].count]);
+                .map(el => [el[0].substring(hostnamePrefix.length), el[1].count])
+                .sort((a, b) => {
+                    const connA = a[1];
+                    const connB = b[1];
+                    if (connB < connA) {
+                        return -1;
+                    } else if (connA < connB) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                });
         }
     }
 }
