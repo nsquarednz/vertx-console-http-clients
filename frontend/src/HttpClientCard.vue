@@ -139,6 +139,7 @@
         height: 70px;
         overflow: auto;
         padding: 15px;
+        font-weight: bold;
 
         .key {
             display: inline-block;
@@ -146,15 +147,14 @@
 
         .value {
             float: right;
-            font-weight: bold;
         }
 
         .counter-row {
-            &.websockets .value {
+            &.websockets {
                 color: #007a87;
             }
 
-            &.exceptions .value {
+            &.exceptions {
                 color: #ec7a08;
             }
         }
