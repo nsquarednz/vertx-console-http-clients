@@ -103,11 +103,11 @@
         height: 375px;
         overflow-y: auto;
         width: 100%;
-        padding: 13px 15px 15px;
+        padding: 15px;
     }
 
     .connections-title {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 300;
     }
 }
