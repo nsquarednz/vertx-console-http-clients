@@ -136,7 +136,7 @@
         <div class="http-client card-pf">
             <div class="card-pf-body">
                 <div class="client-name">{{ name }}</div>
-                <div class="time-period">Last 5m</div>
+                <div class="time-period">{{ getMetric('requests').count }} Total Reqs</div>
                 <div class="pf-card-separator" />
                 <div class="stats">
                     <div class="left">
