@@ -17,7 +17,13 @@ public class HttpClientsConsolePage implements ConsolePage {
         return new HttpClientsConsolePage(metricsService);
     }
 
-    public HttpClientsConsolePage(MetricsService metricsService) {
+    /**
+     * Creates the http clients console page, using the provided metrics service
+     *
+     * @param metricsService the metrics service to retrieve data from
+     * @return the console page
+     */
+    private HttpClientsConsolePage(MetricsService metricsService) {
         this.metricsService = metricsService;
     }
 
